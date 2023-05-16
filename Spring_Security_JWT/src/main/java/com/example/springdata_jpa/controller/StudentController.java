@@ -80,7 +80,7 @@ public class StudentController {
     public String authenticateandgetoken(@RequestBody Authrequest authrequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authrequest.getUsername(), authrequest.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(authrequest.getUsername());
+            return "token: "+jwtService.generateToken(authrequest.getUsername());
         } else {
             throw new UsernameNotFoundException("Invalid user request");
         }
